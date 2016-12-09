@@ -1,103 +1,52 @@
 var app = angular.module('TourOfHeroes', ["ngRoute"]);
 
+//-------------routes
 app.config(['$routeProvider', function (rp) {
 	rp.when("/home", {
 		templateUrl : "Partials/home.html",
 		controller : "HomeController as ctrl"
+
 	})
-	.when("/people",{
-		templateUrl : "Partials/people.html",
-		controller : "PeopleController as ctrl"	
+	.when("/aliens",{
+		templateUrl : "Partials/aliens.html",
+		controller : "AliensController as ctrl"	
+
 	})
-	.when("/people/:id/edit",{
-		templateUrl : "Partials/edit.html"
-,		controller : "PeopleEditController as ctrl"
+	.when("/aliens/:name/edit",{
+		templateUrl : "Partials/edit.html",
+		controller : "AliensEditController as ctrl"
 	})
 
-	.otherwise("/home");
+	.otherwise("/home"); //---------change to home once json is fixed
 }]);
 
-app.controller('HomeController', function ($rootScope, people) {
-	var ctrl = this;
-	$rootScope.title = "Home";
-	ctrl.topPeople = people.topPeople();
+//--------------aliens controller
+app.controller('AliensController', ['$scope', '$location',  function($scope, $location){
+  // alienDataService.getAliens().then(function(aliens){
+  //     $scope.aliens = aliens.data.aliens;
 
-});
-app.controller('PeopleController', function ($rootScope, people) {
-	var ctrl = this;
-	$rootScope.title = "All People";
-	ctrl.allPeople = people.allPeople();
+  //   //   $scope.goToDashboard = function (path) {
+  //   //  $location.path(path);
+  //   // };
 
-	// ctrl.list = list.aliens;
-	// //console.log("aliens.name");
-
-});
-app.controller('PeopleEditController', function ($rootScope, people, $routeParams) {
-	var ctrl = this;
-	ctrl.person = people.get($routeParams.id);
-	$rootScope.title = "Edit " + ctrl.person.name;
-});
-
-app.service('people', function ($filter) {
-
-	var people = [
-		{
-			id : 1,
-			name : 'Superman'
-		},
-		{
-			id : 2,
-			name : 'Batman'
-		},
-		{
-			id : 3,
-			name : 'Spiderman'
-		},
-		{
-			id : 4,
-			name : 'WonderWoman'
-		}
-	];	
-	return {
-		add: function (person) {
-			people.push(person);
-		},
-
-		get: function (id) {
-			id = parseInt(id);
-			var person = $filter('filter')(people, {id:id}, true);
-
-			if (person.length){
-				person = person[0];
-			}else{
-				person = {};
-			}
-			return person;
-		},
-
-		allPeople : function () {
-			return people;
-		},
-
-		topPeople : function () {
-			return people.slice(0, 3);
-		}
-
-	}
+  //   $scope.clicked = function(){
+  //      window.location = "#/test.html";
+ 	// }
+  // })
+       $scope.goToDashboard = function (path) {
+     $location.path(path);
+    };
+}]);
 
 
-});
-
-
-
-app.controller('SpecialOrderItemsCtrl', ['$scope', 'alienDataService',  function($scope, alienDataService){
-  // when promise is resolved, set the scope variable
+app.controller('AliensEditController', ['$scope', 'alienDataService',  function($scope, alienDataService, $routeParams){
   alienDataService.getAliens().then(function(aliens){
-      // store any data from json that you want on the scope for later access in your templates
-      $scope.aliens = aliens.data.aliens[0].name;
-      //$scope.custInfo=articles.data.customer;
+      $scope.alien = aliens.data.aliens.get($routeParams);;
+     //$rootScope.title = "Edit " + ctrl.person.name;
+
   })
 }]);
+
 
 // ---- angular factory and promise code borrowed from: http://plnkr.co/edit/7Oas2T
 app.factory('alienDataService',['$http', '$q', function($http, $q){
@@ -122,6 +71,22 @@ app.factory('alienDataService',['$http', '$q', function($http, $q){
   } ;
 }]);
 
+
+
+
+
+//====with other crap
+// app.controller('AliensController', ['$scope', 'alienDataService',  function($scope, alienDataService){
+//   // when promise is resolved, set the scope variable
+//   alienDataService.getAliens().then(function(aliens){
+//       // store any data from json that you want on the scope for later access in your templates
+//       $scope.aliens = aliens.data.aliens;
+//       //$scope.custInfo=articles.data.customer;
+//       // var ctrl =this;
+//       // ctrl.allAliens = aliens;
+
+//   })
+// }]);
 
 //===============useless or might reuse code=======================
 // app.factory('aliens', function($http){

@@ -1,5 +1,6 @@
 <h2>All Aliens</h2>
 
-<a href="#/aliens/{{alien.id}}/edit" ng-repeat="alien in ctrl.allAliens"> 
+<a href="#/aliens/{{alien.name}}/edit" ng-repeat="alien in aliens"> 
 	<ul>{{ alien.name }}</ul>
 </a>
+<button ng-click="app.goToDashboard()">Dashboard</button>
