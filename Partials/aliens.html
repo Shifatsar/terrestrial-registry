@@ -1,6 +1,11 @@
 <h2>All Aliens</h2>
 
-<a href="#/aliens/{{alien.name}}/edit" ng-repeat="alien in aliens"> 
+<form style="display: inline" action="#/aliens/{{alien.name}}/edit" ng-repeat="alien in aliens"> 
+	<button><ul>{{ alien.name }}</ul></button>
+	</br>
+</form>
+
+
+<!-- <button ng-click="go('/'+{{alien-name}}+'/edit')" ng-repeat="alien in aliens">
 	<ul>{{ alien.name }}</ul>
-</a>
-<button ng-click="app.goToDashboard()">Dashboard</button>
+</button> -->

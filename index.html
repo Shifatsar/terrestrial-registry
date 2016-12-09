@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html ng-app="TourOfHeroes">
 <head>
-	<title>{{ title || "Doctor Who App"}}</title>
+	<title>{{ title || "Doctor Who App"}}</title>	
 	<link rel="stylesheet" href="styles.css">
 </head>
-<body >
-	<!-- static header -->
-	<h1>Doctor Who</h1>
-	<div>
-		<!-- <h2><a href="#/home" target="_	self">DashBoard</a></h2>
-		<h2><a href="#/aliens" target="_self">Aliens</a></h2> -->
-
-		<!-- <button href="Partials/home.html">DashBoard</button> -->
-		<button ng-click="app.goToDashboard('/home')">Dashboard</button>
-		<button href="Partials/aliens.html">Aliens</button>
-
-		<button ng-click="clicked()">Click</button>
-	</div>
+<body ng-controller = "AliensController">
 	
+	<h1>Doctor Who</h1>
+	<header>
+		<div>
+			<button ng-click="go('/home')">Dashboard</button>
+			<button ng-click="go('/aliens')">Aliens</button>
+		</div>
+		<!-- <p>I just spammed the button {{count}} times </p> -->
+	</header>
 	<div ng-view></div>
-
-	<!-- <div ng-controller="AliensController">{{aliens}}</div> -->
 
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>

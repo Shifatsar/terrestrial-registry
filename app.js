@@ -1,41 +1,37 @@
 var app = angular.module('TourOfHeroes', ["ngRoute"]);
 
 //-------------routes
-app.config(['$routeProvider', function (rp) {
-	rp.when("/home", {
+app.config(['$routeProvider', function ($routeProvider) {
+	$routeProvider.when("/home", {
 		templateUrl : "Partials/home.html",
-		controller : "HomeController as ctrl"
+		controller : "HomeController"
 
 	})
 	.when("/aliens",{
 		templateUrl : "Partials/aliens.html",
-		controller : "AliensController as ctrl"	
+		controller : "AliensController"	
 
 	})
 	.when("/aliens/:name/edit",{
 		templateUrl : "Partials/edit.html",
-		controller : "AliensEditController as ctrl"
+		controller : "AliensEditController"
 	})
 
 	.otherwise("/home"); //---------change to home once json is fixed
 }]);
 
 //--------------aliens controller
-app.controller('AliensController', ['$scope', '$location',  function($scope, $location){
-  // alienDataService.getAliens().then(function(aliens){
-  //     $scope.aliens = aliens.data.aliens;
-
-  //   //   $scope.goToDashboard = function (path) {
-  //   //  $location.path(path);
-  //   // };
-
-  //   $scope.clicked = function(){
-  //      window.location = "#/test.html";
- 	// }
-  // })
-       $scope.goToDashboard = function (path) {
+app.controller('AliensController', ['$scope', '$location', 'alienDataService', function($scope, $location, alienDataService){
+	
+	$scope.go = function (path) {
      $location.path(path);
     };
+	
+  alienDataService.getAliens().then(function(aliens){
+      $scope.aliens = aliens.data.aliens;
+
+
+  })
 }]);
 
 
