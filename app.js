@@ -20,12 +20,22 @@ app.config(['$routeProvider', function ($routeProvider) {
 	.otherwise("/home"); //---------change to home once json is fixed
 }]);
 
-//--------------aliens controller
+app.controller('HomeController', ['$scope', '$location', 'alienDataService', function($scope, $location, alienDataService){
+    alienDataService.getAliens().then(function(aliens){
+      $scope.aliens = aliens.data.aliens;
+       //$scope.aliens.splice(0,3);
+  })
+}]);
+
 app.controller('AliensController', ['$scope', '$location', 'alienDataService', function($scope, $location, alienDataService){
 	
 	$scope.go = function (path) {
      $location.path(path);
-    };
+    }
+
+    $scope.createAlienUrl = function(alienName){
+    	return "aliens/" + alienName + "/edit";
+    }
 	
   alienDataService.getAliens().then(function(aliens){
       $scope.aliens = aliens.data.aliens;
@@ -37,7 +47,7 @@ app.controller('AliensController', ['$scope', '$location', 'alienDataService', f
 
 app.controller('AliensEditController', ['$scope', 'alienDataService',  function($scope, alienDataService, $routeParams){
   alienDataService.getAliens().then(function(aliens){
-      $scope.alien = aliens.data.aliens.get($routeParams);;
+      $scope.alien = aliens.data.aliens.get($routeParams);
      //$rootScope.title = "Edit " + ctrl.person.name;
 
   })
@@ -64,6 +74,7 @@ app.factory('alienDataService',['$http', '$q', function($http, $q){
       }
       return promise;
     }
+
   } ;
 }]);
 
