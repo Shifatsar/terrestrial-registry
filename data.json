@@ -1,0 +1,20 @@
+{"aliens":[
+    {"name":"Daleks",			"homeplanet":"Skaro", 		"votes":"0"},
+    {"name":"Thals",			"homeplanet":"Skaro", 		"votes":"0"},
+    {"name":"Cybermen",			"homeplanet":"Mondas",		"votes":"0"},
+    {"name":"Time Lords",		"homeplanet":"Gallifrey",	"votes":"0"},
+    {"name":"Silurians",		"homeplanet":"Earth",		"votes":"0"},
+    {"name":"Sontarans",		"homeplanet":"Sontar",		"votes":"0"},
+    {"name":"Weeping Angels",	"homeplanet":"N/A",			"votes":"0"},
+    {"name":"Fisher King",		"homeplanet":"Tivoli",		"votes":"0"},
+    {"name":"Adipose",			"homeplanet":"Adipose 3",	"votes":"0"},
+    {"name":"Zocci",			"homeplanet":"Sto",			"votes":"0"},
+    {"name":"Graske",			"homeplanet":"Griffoth",	"votes":"0"},
+    {"name":"Voord",			"homeplanet":"Marinus",		"votes":"0"},
+    {"name":"Catkind",			"homeplanet":"New Earth",	"votes":"0"},
+    {"name":"Pyroviles",		"homeplanet":"Pyrovillia",	"votes":"0"},
+    {"name":"Vashta Nerada",	"homeplanet":"N/A",			"votes":"0"},
+    {"name":"Kahler cyborg",	"homeplanet":"Kahler",		"votes":"0"},
+    {"name":"Slients",			"homeplanet":"N/A",			"votes":"0"},
+    {"name":"Ood",				"homeplanet":"Ood Sphere",	"votes":"0"}
+]}
