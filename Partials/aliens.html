@@ -1,3 +1,6 @@
-<h2>All Aliens</h2>
+<h4>All Aliens</h4>
 
-<button ng-click="go(createAlienUrl(alien.name))" ng-repeat="alien in aliens"><ul>{{ alien.name }}</ul></button>
+	<span>
+		<img ng-src="{{alien.location}}" ng-click="go(createAlienUrl(alien.name))" ng-repeat="alien in aliens" />
+		<ul>{{ alien.name }}</ul>
+	</span>

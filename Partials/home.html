@@ -1,9 +1,13 @@
-<h2>Dashboard</h2>
+<h4>Dashboard</h4>
 
-<h4>Featured Aliens:</h4>
+<h5>Featured Aliens:</h5>
 
-<button ng-click="go(createAlienUrl(aliens[0].name))" >{{ aliens[0].name }}</button>
-<button ng-click="go(createAlienUrl(aliens[3].name))" >{{ aliens[3].name }}</button>
-<button ng-click="go(createAlienUrl(aliens[4].name))" >{{ aliens[4].name }}</button>
-<button ng-click="go(createAlienUrl(aliens[5].name))" >{{ aliens[5].name }}</button>
-<button ng-click="go(createAlienUrl(aliens[9].name))" >{{ aliens[9].name }}</button>
+
+<!-- <img ng-src="{{alien.location}}" ng-click="go(createAlienUrl(alien.name))" ng-repeat="alien in aliens" /> -->
+<span>
+<img ng-src="{{aliens[0].location}}" ng-click="go(createAlienUrl(aliens[0].name))"/>
+<img ng-src="{{aliens[3].location}}" ng-click="go(createAlienUrl(aliens[3].name))"/>
+<img ng-src="{{aliens[4].location}}" ng-click="go(createAlienUrl(aliens[4].name))"/>
+<img ng-src="{{aliens[5].location}}" ng-click="go(createAlienUrl(aliens[5].name))"/>
+<img ng-src="{{aliens[9].location}}" ng-click="go(createAlienUrl(aliens[9].name))"/>
+</span>
